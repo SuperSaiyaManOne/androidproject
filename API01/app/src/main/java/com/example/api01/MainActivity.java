@@ -38,11 +38,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextID, editTextName, editTextEmail;
     Button addButton, reviseButton, delButton;
     ListView listView;
-//    final String host_ip = "http://192.168.58.132:8000"; 這是之前老師的ip
-//    final String host_ip = "http://192.168.0.100:8000";
-//    final String host_ip = "http://10.0.0.195:8000";
-//    final String host_ip = "http://192.168.42.44:8000";
-    final String host_ip = "http://192.168.1.105:8000";
+    final String host_ip = "http://192.168.x.xxx:8000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //show data in listview
-    //物聯網應用-Django (呈祥)(第二章-Web API and Android) P25
     private void show_data() {
 //        Log.d("show_msg","show_data");
         OkHttpClient client = new OkHttpClient();//client物件，目的是處理網路的請求
@@ -109,21 +104,8 @@ public class MainActivity extends AppCompatActivity {
         //用於指定轉換的目標類型
         TypeToken<ArrayList<TextString>> typeToken = new TypeToken<ArrayList<TextString>>(){};
 
-        //方式1：將response_body轉換為ArrayList<TextString> 型別的物件
+        //將response_body轉換為ArrayList<TextString> 型別的物件
         ArrayList<TextString> list = gson.fromJson(response_body,typeToken.getType());
-
-        //方式2：使用匿名
-//        ArrayList<TextString> list2 = gson.fromJson(response_body,new TypeToken<ArrayList<TextString>>(){}.getType());
-//
-//        Log.d("show_msg",String.valueOf(list.size()));
-//        Log.d("show_msg",list.get(0).getId());
-//        Log.d("show_msg",list.get(0).getcName());
-//        Log.d("show_msg",list.get(0).getcEmail());
-
-//        for (TextString data : list) {
-//            Log.d("show_msg",data.getId()+" "+data.getcName()+" "+data.getcEmail());
-//        }
-
           //資料倒入list
           List<Map<String,Object>> items = new ArrayList<>();
           for (TextString data : list) {
